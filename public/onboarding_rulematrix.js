@@ -2,435 +2,165 @@
     // ==========================================
     // 1. DATA (Timeline Matrix Data)
     // ==========================================
-   const RAW_STEPS = [
-  {
-    'step_id': 'step_1',
-    'text': 'PonziLens+ combines a Path Feature Module (top), a Path Grouping Module (center), and an Execution Detail Module (bottom) to reveal suspicious payment patterns, supported by a left feature guide and legends.',
-    'step_type': 'structure',
-    'targets': {'target_view_id': 'multiple',
-      'raw': {},
-      'resolvedSelector': null},
-    'actions': ['highlight'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_2',
-    'text': 'Start in the Path Feature Module to spot Ponzi feature distributions, inspect the Path Grouping Module for action patterns and loops, then confirm execution details using the Execution Detail Module.',
-    'step_type': 'structure',
-    'targets': {'target_view_id': 'overview_action_dots_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview/summary container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G circle[cy="72.10993883792048"]',
-            'confidence': 'high',
-            'reason': 'row of action dots along the top overview track'},
-          {'selector': 'g.overview_G circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Write action dots'},
-          {'selector': 'g.overview_G circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment action dots'},
-          {'selector': 'g.overview_G circle[fill="#dcbd8b" i]',
-            'confidence': 'medium',
-            'reason': 'Constraint action dots'},
-          {'selector': 'g.overview_G circle[fill="#a6a6a6" i]',
-            'confidence': 'medium',
-            'reason': 'Read action dots'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'emphasized nodes likely hover/selection targets'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_3',
-    'text': 'All modules share a left-to-right execution order; align a colored dot\'s horizontal position across the Path Feature Module, Path Grouping Module, and Execution Detail Module to connect the same event.',
-    'step_type': 'structure',
-    'targets': {'target_view_id': 'overview_action_dots_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview/summary container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G circle[cy="72.10993883792048"]',
-            'confidence': 'high',
-            'reason': 'row of action dots along the top overview track'},
-          {'selector': 'g.overview_G circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Write action dots'},
-          {'selector': 'g.overview_G circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment action dots'},
-          {'selector': 'g.overview_G circle[fill="#dcbd8b" i]',
-            'confidence': 'medium',
-            'reason': 'Constraint action dots'},
-          {'selector': 'g.overview_G circle[fill="#a6a6a6" i]',
-            'confidence': 'medium',
-            'reason': 'Read action dots'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'emphasized nodes likely hover/selection targets'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_4',
-    'text': 'The left feature guide lists four Ponzi behaviors—Investing, Payment, Loop, and Rewarding—used to interpret highlighted marks and path group names.',
-    'step_type': 'data',
-    'targets': {'target_view_id': 'feature_guide_left',
-      'raw': {'view': {'candidates': [{'selector': 'g.filter_G',
-          'confidence': 'high',
-          'reason': 'container or structural grouping'}]},
-        'encoding': {'candidates': [{'selector': 'g.filter_G rect[fill="#648072" i]',
-            'confidence': 'high',
-            'reason': 'guide bars and pillars on the left'},
-          {'selector': 'g.filter_G rect[fill="#d5ebe1" i]',
-            'confidence': 'medium',
-            'reason': 'outlined/empty guide bars on the left'},
-          {'selector': 'g.filter_G path[fill="#648072" i]',
-            'confidence': 'medium',
-            'reason': 'shaded guide areas'},
-          {'selector': 'g.filter_G path[fill^="url("]',
-            'confidence': 'medium',
-            'reason': 'gradient guide wedges'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.filter_G'},
-    'actions': ['highlight', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_5',
-    'text': 'The legend maps colored dots: blue W = Write Information, red P = Invoke Payment, yellow C = Check Constraint, gray R = Read Information.',
-    'step_type': 'data',
-    'targets': {'target_view_id': 'legend_actions',
-      'raw': {'view': {'candidates': [{'selector': 'g.legend',
-          'confidence': 'high',
-          'reason': 'legend container group'}]},
-        'encoding': {'candidates': [{'selector': 'g.legend g.WRITE circle',
-            'confidence': 'high',
-            'reason': 'Write action swatches'},
-          {'selector': 'g.legend g.PAY circle',
-            'confidence': 'high',
-            'reason': 'Payment action swatches'},
-          {'selector': 'g.legend g.CONS circle',
-            'confidence': 'high',
-            'reason': 'Constraint action swatches'},
-          {'selector': 'g.legend g.READ circle',
-            'confidence': 'high',
-            'reason': 'Read action swatches'},
-          {'selector': 'g.legend circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Write color sample'},
-          {'selector': 'g.legend circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment color sample'},
-          {'selector': 'g.legend circle[fill="#dcbd8b" i]',
-            'confidence': 'medium',
-            'reason': 'Constraint color sample'},
-          {'selector': 'g.legend circle[fill="#a6a6a6" i]',
-            'confidence': 'medium',
-            'reason': 'Read color sample'}]},
-        'interaction': {'candidates': [{'selector': 'g.legend g.WRITE',
-            'confidence': 'medium',
-            'reason': 'legend item group likely clickable'},
-          {'selector': 'g.legend g.PAY',
-            'confidence': 'medium',
-            'reason': 'legend item group likely clickable'},
-          {'selector': 'g.legend g.CONS',
-            'confidence': 'medium',
-            'reason': 'legend item group likely clickable'},
-          {'selector': 'g.legend g.READ',
-            'confidence': 'medium',
-            'reason': 'legend item group likely clickable'}]}},
-      'resolvedSelector': 'g.legend'},
-    'actions': ['highlight', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_6',
-    'text': 'Each colored dot represents one action; its left-to-right position shows execution order. A black-outlined circle highlights a notable Ponzi feature event—Investing (blue) or Payment (red).',
-    'step_type': 'encoding',
-    'targets': {'target_view_id': 'overview_action_dots_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview/summary container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G circle[cy="72.10993883792048"]',
-            'confidence': 'high',
-            'reason': 'row of action dots along the top overview track'},
-          {'selector': 'g.overview_G circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Write action dots'},
-          {'selector': 'g.overview_G circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment action dots'},
-          {'selector': 'g.overview_G circle[fill="#dcbd8b" i]',
-            'confidence': 'medium',
-            'reason': 'Constraint action dots'},
-          {'selector': 'g.overview_G circle[fill="#a6a6a6" i]',
-            'confidence': 'medium',
-            'reason': 'Read action dots'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'emphasized nodes likely hover/selection targets'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'glow', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_7',
-    'text': 'Each light-gray rounded card groups adjacent colored dots into a basic block—a sequence of instructions with no internal branches. These cards help you follow execution as compact units.',
-    'step_type': 'encoding',
-    'targets': {'target_view_id': 'overview_segment_boxes_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G rect[fill="#dfe4ea" i][y="64.09388379204893"]',
-            'confidence': 'high',
-            'reason': 'top-row segment boxes'},
-          {'selector': 'g.overview_G rect[fill="#dfe4ea" i][y="52.87140672782874"]',
-            'confidence': 'medium',
-            'reason': 'taller top segment boxes'},
-          {'selector': 'g.overview_G rect[fill="#dfe4ea" i][y="40.04571865443425"]',
-            'confidence': 'medium',
-            'reason': 'header/topmost boxes'},
-          {'selector': 'g.overview_G > rect[fill="#dfe4ea" i]',
-            'confidence': 'medium',
-            'reason': 'all overview segment boxes (fallback)'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'glow', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_8',
-    'text': 'A purple wrapper enclosing a group of basic blocks indicates those blocks are executed in a loop (PF3). This is one of the most important Ponzi indicators—present in three out of four Ponzi scheme types.',
-    'step_type': 'encoding',
-    'targets': {'target_view_id': 'overview_loop_links_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path[stroke="#9b8ea9" i][stroke-width="1.5"]',
-            'confidence': 'medium',
-            'reason': 'purple loop wrapper drawn around looping basic blocks'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'glow', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_9',
-    'text': 'The storage tracks beneath the action sequence depict which storage slots are accessed during execution. Purple square icons identify slot types: a solid square for variables, horizontal lines for arrays, vertical lines for mappings.',
-    'step_type': 'data',
-    'targets': {'target_view_id': 'storage_tracks_bottom',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'bottom storage tracks share the same overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P10, g.overview_G path.P8, g.overview_G path.P9, g.overview_G path.P14, g.overview_G path.P0, g.overview_G path.P15',
-            'confidence': 'high',
-            'reason': 'multi-row storage timelines at the bottom'},
-          {'selector': 'g.overview_G circle[cy="559.5395259938838"], g.overview_G circle[cy="591.9288417431194"], g.overview_G circle[cy="612.9709862385321"], g.overview_G circle[cy="641.4636085626912"], g.overview_G circle[cy="653.9330275229358"]',
-            'confidence': 'medium',
-            'reason': 'storage operation dots on bottom rows'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_10',
-    'text': 'Purple circles beneath each storage slot icon represent the data stored there. Symbols like a person icon for CALLER (investor address) and $ for CALLVALUE (investment amount) highlight Ponzi-scheme-relevant content. A black border on a slot means it is used for Rewarding previous investors.',
-    'step_type': 'encoding',
-    'targets': {'target_view_id': 'storage_tracks_bottom',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'bottom storage tracks share the same overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P10, g.overview_G path.P8, g.overview_G path.P9, g.overview_G path.P14, g.overview_G path.P0, g.overview_G path.P15',
-            'confidence': 'high',
-            'reason': 'multi-row storage timelines at the bottom'},
-          {'selector': 'g.overview_G circle[cy="559.5395259938838"], g.overview_G circle[cy="591.9288417431194"], g.overview_G circle[cy="612.9709862385321"], g.overview_G circle[cy="641.4636085626912"], g.overview_G circle[cy="653.9330275229358"]',
-            'confidence': 'medium',
-            'reason': 'storage operation dots on bottom rows'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'glow', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_11',
-    'text': 'In the Path Grouping Module, colored dots mark actions along merged execution paths arranged left to right. Actions within a loop are arranged on a two-round Archimedean spiral in the Execution Detail Module—outer circle for round one, inner circle for round two—so you can compare what changes between rounds.',
-    'step_type': 'encoding',
-    'targets': {'target_view_id': 'detail_flow_center',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'medium',
-          'reason': 'contains the central detailed flow'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P4',
-            'confidence': 'high',
-            'reason': 'primary center flow polyline'},
-          {'selector': 'g.overview_G path.P2',
-            'confidence': 'high',
-            'reason': 'alternate center flow polyline'},
-          {'selector': 'g.overview_G path.P3',
-            'confidence': 'high',
-            'reason': 'tertiary center flow polyline'},
-          {'selector': 'g.overview_G circle[cy="193.93616207951072"]',
-            'confidence': 'medium',
-            'reason': 'center-row action nodes'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G path.arrow',
-            'confidence': 'medium',
-            'reason': 'callout arrow near center likely hover/annotation trigger'},
-          {'selector': 'g.overview_G circle[stroke="black" i][cy="193.93616207951072"]',
-            'confidence': 'medium',
-            'reason': 'highlighted center nodes for interaction'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'glow', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_12',
-    'text': 'In the Execution Detail Module, lines connect Write Information and Invoke Payment actions to the storage slots they use. Blue lines indicate writing Ponzi-relevant content; red solid lines show where a payment retrieves its recipient address; red dashed lines show where it retrieves the payment amount.',
-    'step_type': 'structure',
-    'targets': {'target_view_id': 'storage_tracks_bottom',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'bottom storage tracks share the same overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P10, g.overview_G path.P8, g.overview_G path.P9, g.overview_G path.P14, g.overview_G path.P0, g.overview_G path.P15',
-            'confidence': 'high',
-            'reason': 'storage connection lines linking actions to slots'},
-          {'selector': 'g.overview_G circle[cy="559.5395259938838"], g.overview_G circle[cy="591.9288417431194"]',
-            'confidence': 'medium',
-            'reason': 'storage slot dots connected to actions'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_13',
-    'text': 'In the Execution Detail Module spiral, look for red payment dots in the outer and inner circles that differ in their connected storage slots—this means the two loop rounds pay different recipients, a hallmark of chain-scheme Ponzi payouts.',
-    'step_type': 'analytical',
-    'targets': {'target_view_id': 'storage_tracks_bottom',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'execution detail module including spiral and storage'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P4',
-            'confidence': 'high',
-            'reason': 'spiral loop flow polyline'},
-          {'selector': 'g.overview_G circle[cy="193.93616207951072"]',
-            'confidence': 'medium',
-            'reason': 'action nodes in spiral rounds'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'highlighted inner circle actions indicating parameter differences between rounds'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'trace', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_14',
-    'text': 'In the Path Grouping Module, scan for stretches where red payment dots consistently follow yellow constraint dots; this means gated releases that may cascade across many recipients.',
-    'step_type': 'analytical',
-    'targets': {'target_view_id': 'overview_action_dots_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview/summary container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G circle[cy="72.10993883792048"]',
-            'confidence': 'high',
-            'reason': 'row of action dots along the top overview track'},
-          {'selector': 'g.overview_G circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Write action dots'},
-          {'selector': 'g.overview_G circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment action dots'},
-          {'selector': 'g.overview_G circle[fill="#dcbd8b" i]',
-            'confidence': 'medium',
-            'reason': 'Constraint action dots'},
-          {'selector': 'g.overview_G circle[fill="#a6a6a6" i]',
-            'confidence': 'medium',
-            'reason': 'Read action dots'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'emphasized nodes likely hover/selection targets'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'trace', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_15',
-    'text': 'In the storage tracks, look for many blue Write Information lines feeding a single slot whose icon is highlighted in black; concentrated writes to an investor-address slot confirm pooling of deposits before later payouts.',
-    'step_type': 'analytical',
-    'targets': {'target_view_id': 'storage_tracks_bottom',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'bottom storage tracks share the same overview container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G path.P10, g.overview_G path.P8, g.overview_G path.P9, g.overview_G path.P14, g.overview_G path.P0, g.overview_G path.P15',
-            'confidence': 'high',
-            'reason': 'multi-row storage timelines at the bottom'},
-          {'selector': 'g.overview_G circle[cy="559.5395259938838"], g.overview_G circle[cy="591.9288417431194"], g.overview_G circle[cy="612.9709862385321"], g.overview_G circle[cy="641.4636085626912"], g.overview_G circle[cy="653.9330275229358"]',
-            'confidence': 'medium',
-            'reason': 'storage operation dots on bottom rows'}]},
-        'interaction': {'candidates': []}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'trace', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_16',
-    'text': 'When a black-outlined red payment dot appears, hover over it to see its tooltip showing the recipient address and payment amount. Then trace its red solid and dashed lines down to storage to confirm whether it pays a previous investor (Rewarding) or returns money to the current caller (Payback).',
-    'step_type': 'analytical',
-    'targets': {'target_view_id': 'overview_action_dots_top',
-      'raw': {'view': {'candidates': [{'selector': 'g.overview_G',
-          'confidence': 'high',
-          'reason': 'overview/summary container'}]},
-        'encoding': {'candidates': [{'selector': 'g.overview_G circle[cy="72.10993883792048"]',
-            'confidence': 'high',
-            'reason': 'row of action dots along the top overview track'},
-          {'selector': 'g.overview_G circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment action dots'},
-          {'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'highlighted payment events'}]},
-        'interaction': {'candidates': [{'selector': 'g.overview_G circle[stroke="black" i]',
-            'confidence': 'medium',
-            'reason': 'hover to reveal tooltip with payment details'}]}},
-      'resolvedSelector': 'g.overview_G'},
-    'actions': ['highlight', 'trace', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  },
-  {
-    'step_id': 'step_17',
-    'text': 'Use the Highlight Features legend to decode the four Ponzi feature symbols: a black-outlined blue dot for Investing, a black-outlined red dot for Payment, a purple wrapper for Loop, and a black line connecting Investing to Payment for Rewarding.',
-    'step_type': 'data',
-    'targets': {'target_view_id': 'legend_highlights',
-      'raw': {'view': {'candidates': [{'selector': 'g.legend',
-          'confidence': 'high',
-          'reason': 'legend container group'}]},
-        'encoding': {'candidates': [{'selector': 'g.legend path[stroke="#9b8ea9" i]',
-            'confidence': 'high',
-            'reason': 'loop highlight glyphs'},
-          {'selector': 'g.legend circle[stroke="black" i][r="6"]',
-            'confidence': 'medium',
-            'reason': 'outlined highlight markers for Investing and Payment'},
-          {'selector': 'g.legend circle[fill="#92b0c9" i]',
-            'confidence': 'medium',
-            'reason': 'Investing highlight symbol'},
-          {'selector': 'g.legend circle[fill="#c67269" i]',
-            'confidence': 'medium',
-            'reason': 'Payment highlight symbol'}]},
-        'interaction': {'candidates': [{'selector': 'g.legend circle[stroke="black" i]',
-            'confidence': 'low',
-            'reason': 'outlined legend markers commonly used as toggles'},
-          {'selector': 'g.legend path[stroke="#9b8ea9" i]',
-            'confidence': 'low',
-            'reason': 'loop glyphs may be hoverable legend items'}]}},
-      'resolvedSelector': 'g.legend'},
-    'actions': ['highlight', 'annotation'],
-    'annotation': {'type': 'callout', 'placement': 'auto'}
-  }
-];
+    const RAW_STEPS = [{'step_id': 'step_1',
+  'text': 'Each row is a rule; columns are features; right panels summarise prediction, fidelity, and evidence.',
+  'target_view': 'multiple',
+  'target_category': 'view',
+  'targets': {},
+  'actions': ['highlight'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_2',
+  'text': 'Left bars and curved connectors summarise Negative and Positive samples flowing into each rule.',
+  'target_view': 'left_flows_panel',
+  'target_category': 'view',
+  'targets': {'view': {'candidates': [{'selector': 'g.rule-matrix g.flows g.v-reserves.visible rect',
+      'confidence': 'high',
+      'reason': 'Dedicated container for left-side reserves and flow curves'}]}},
+  'actions': ['highlight'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_3',
+  'text': 'Features include Glucose, Body Mass Index, Age, Diabetes Pedigree, Insulin, and Pregnancies.',
+  'target_view': 'feature_headers',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.headers g.header text.header-text',
+      'confidence': 'high',
+      'reason': 'Rotated feature name labels above columns'}]}},
+  'actions': ['highlight', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_4',
+  'text': 'Two classes are shown: Negative (blue) and Positive (orange).',
+  'target_view': 'legend_labels',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.rm-labels g.rm-label rect',
+      'confidence': 'high',
+      'reason': 'Legend color swatches for classes'},
+     {'selector': 'g.rm-labels g.rm-predict rect',
+      'confidence': 'high',
+      'reason': 'Legend swatches using stripe patterns indicating wrong predictions'},
+     {'selector': 'g.rm-labels text',
+      'confidence': 'medium',
+      'reason': 'Legend text labels naming categories'}]}},
+  'actions': ['highlight', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_5',
+  'text': 'The Glucose axis above shows numeric tick values for interpreting histogram positions.',
+  'target_view': 'header_axis',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.headers',
+      'confidence': 'high',
+      'reason': 'Tick labels encoding numeric axis values'},
+     {'selector': 'g.headers g.header-axis path.domain',
+      'confidence': 'medium',
+      'reason': 'Axis domain line for the numeric scale'},
+     {'selector': 'g.headers g.header-axis g.tick line',
+      'confidence': 'medium',
+      'reason': 'Tick marks on the axis'}]}},
+  'actions': ['highlight', 'glow', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_6',
+  'text': 'Blue and orange histograms show class distributions; the gray band marks the rule’s selected range.',
+  'target_view': 'rule_matrix',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.rules g.hp-hists rect',
+      'confidence': 'high',
+      'reason': 'Histogram bars (blue/orange) encoding class distributions per feature cell'},
+     {'selector': 'g.rules rect.hp-brush',
+      'confidence': 'high',
+      'reason': 'Shaded selection band encoding the rule’s selected range'}]}},
+  'actions': ['highlight', 'glow', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_7',
+  'text': 'Each rule’s probability appears as a number with a tiny stacked bar showing class share.',
+  'target_view': 'outputs_probability_panel',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.outputs g.matrix-outputs text.mo-output',
+      'confidence': 'high',
+      'reason': 'Numeric probability text per rule'},
+     {'selector': 'g.outputs g.matrix-outputs g.mo-outputs rect',
+      'confidence': 'high',
+      'reason': 'Tiny stacked bar encoding class shares'}]}},
+  'actions': ['highlight', 'glow', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_8',
+  'text': 'A green circular gauge displays fidelity, with higher numbers indicating better agreement.',
+  'target_view': 'fidelity_gauge_panel',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.outputs g.matrix-outputs g.mo-fidelity path.mo-fidelity',
+      'confidence': 'high',
+      'reason': 'Circular gauge arc encoding fidelity score'},
+     {'selector': 'g.outputs g.matrix-outputs g.mo-fidelity text.mo-fidelity',
+      'confidence': 'medium',
+      'reason': 'Text label encoding the fidelity value'}]}},
+  'actions': ['highlight', 'glow', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_9',
+  'text': 'Horizontal bars show supporting instances by class; hatched segments indicate wrong predictions.',
+  'target_view': 'evidence_support_panel',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.outputs g.matrix-outputs g.mo-supports g.mo-support-mat rect',
+      'confidence': 'high',
+      'reason': 'Horizontal bars and hatched segments encoding support and errors by class'}]}},
+  'actions': ['highlight', 'glow', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_10',
+  'text': 'Check histograms and ranges to see which class dominates within each rule.',
+  'target_view': 'rule_matrix',
+  'target_category': 'encoding',
+  'targets': {'encoding': {'candidates': [{'selector': 'g.rules g.hp-hists rect',
+      'confidence': 'high',
+      'reason': 'Histogram bars (blue/orange) encoding class distributions per feature cell'},
+     {'selector': 'g.rules rect.hp-brush',
+      'confidence': 'high',
+      'reason': 'Shaded selection band encoding the rule’s selected range'}]}},
+  'actions': ['highlight', 'trace', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_11',
+  'text': 'Compare probability, fidelity, and evidence to prioritize trustworthy, well-supported rules.',
+  'target_view': 'multiple',
+  'target_category': 'encoding',
+  'targets': {},
+  'actions': ['highlight', 'trace', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_12',
+  'text': 'Click a condition cell to expand a detailed stream view for that feature.',
+  'target_view': 'rule_matrix',
+  'target_category': 'interaction',
+  'targets': {'interaction': {'candidates': [{'selector': 'g.rules g.matrix-condition',
+      'confidence': 'high',
+      'reason': 'Clickable condition cells for expanding detailed views'},
+     {'selector': 'g.rules g.matrix-rule',
+      'confidence': 'medium',
+      'reason': 'Row grouping used as hover region for tooltips'},
+     {'selector': 'g.rule-matrix g.cursor-follow .rm-tooltip',
+      'confidence': 'medium',
+      'reason': 'Tooltip element shown on hover over conditions or rows'}]}},
+  'actions': ['highlight', 'pulse', 'tooltip', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_13',
+  'text': 'Hover a condition or row to see its rule text tooltip.',
+  'target_view': 'rule_matrix',
+  'target_category': 'interaction',
+  'targets': {'interaction': {'candidates': [{'selector': 'g.rules g.matrix-condition',
+      'confidence': 'high',
+      'reason': 'Clickable condition cells for expanding detailed views'},
+     {'selector': 'g.rules g.matrix-rule',
+      'confidence': 'medium',
+      'reason': 'Row grouping used as hover region for tooltips'},
+     {'selector': 'g.rule-matrix g.cursor-follow .rm-tooltip',
+      'confidence': 'medium',
+      'reason': 'Tooltip element shown on hover over conditions or rows'}]}},
+  'actions': ['highlight', 'pulse', 'tooltip', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}},
+ {'step_id': 'step_14',
+  'text': 'Use Collapse All to close every expanded row at once.',
+  'target_view': 'collapse_all_button',
+  'target_category': 'interaction',
+  'targets': {'interaction': {'candidates': [{'selector': 'g.buttons g.reset-button',
+      'confidence': 'high',
+      'reason': "Clickable control labeled 'Collapse All'"}]}},
+  'actions': ['highlight', 'pulse', 'tooltip', 'annotation'],
+  'annotation': {'type': 'callout', 'placement': 'auto'}}];
 
-    
     // ==========================================
     // 2. HELPER: UTILS (Your Generalization Logic)
     // ==========================================
@@ -585,7 +315,7 @@
         100% { filter:drop-shadow(0 0 2px #3498db); stroke-width:2; }
       }
       .vw-spotlight-ring { animation:vw-ring-pulse 2s ease-in-out infinite; }
-      @keyframes vw-ring-pulse { 0%,100% { opacity:.7; stroke-width:2; } 50% { opacity:1; stroke-width:3; } }
+      @keyframes vw-ring-pulse { 0%,100% { opacity:1; stroke-width:2; } 50% { opacity:1; stroke-width:3; } }
       .vw-connector { fill:none; stroke:#3498db; stroke-width:2; stroke-dasharray:5; animation:vw-dash 1s linear infinite; }
       @keyframes vw-dash { to { stroke-dashoffset:-10; } }
       .vw-locked { border:2px solid #e74c3c !important; background:#fff5f5 !important; }
@@ -983,7 +713,11 @@
                 if (!step) return; // Skip if step itself is undefined
 
                 // Use resolvedSelector as the unique key for grouping
-                let key = step.targets?.resolvedSelector || 'General_Overview';
+                // Change this line in _generalizeData:
+                let key = step.targets?.resolvedSelector || 
+                        step.targets?.view?.candidates?.[0]?.selector || 
+                        step.targets?.encoding?.candidates?.[0]?.selector ||
+                        'General_Overview';
 
                 if (!merged.has(key)) {
                     merged.set(key, {
@@ -1418,48 +1152,42 @@ Answer strictly based on reference data. Keep answers under 50 words.`
 
         // --- VISUALS & SPEECH ---
         _applyStepVisuals(step) {
+    // Look inside the new scrollytelling container specifically
     const leftContainer = document.getElementById('vw-left');
     const svg = leftContainer ? leftContainer.querySelector('svg') : document.querySelector('svg');
     
-    if (!svg) return;
+    if (!svg) {
+        console.error("Highlighting failed: SVG not found in #vw-left");
+        return;
+    }
 
-    // 1. Reset: Aggressively dim everything else
-    // Using a very low opacity (0.1) creates the "spotlight" effect seen in image 1
+    // Reset all elements to low opacity
     svg.querySelectorAll('*').forEach(el => {
-        el.style.opacity = '0.5'; 
-        el.style.transition = 'opacity 0.3s ease, fill-opacity 0.3s ease';
+        el.style.opacity = '0.6';
+        el.style.transition = 'opacity 0.3s ease';
     });
 
-    const selector = step.targets?.resolvedSelector;
+    const selector = step.targets?.resolvedSelector || step.targets?.view?.candidates?.[0]?.selector || step.targets?.encoding?.candidates?.[0]?.selector;
 
-    // 2. Highlighting Logic
     if (selector && selector !== 'svg') {
         try {
-            const containers = svg.querySelectorAll(selector);
+            const targets = svg.querySelectorAll(selector);
+            if (targets.length === 0) console.warn("No elements found for:", selector);
             
-            containers.forEach(container => {
-                // Highlight the container and EVERY child element inside it
-                const allElements = [container, ...container.querySelectorAll('*')];
-                
-                allElements.forEach(el => {
-                    el.style.opacity = '1';
-                    // If your CSS uses fill-opacity for the dots/paths, override it here
-                    if (el.hasAttribute('fill-opacity')) el.style.fillOpacity = '1';
-                    if (el.hasAttribute('stroke-opacity')) el.style.strokeOpacity = '1';
-                });
-
-                // 3. Ensure the parent hierarchy is visible
-                let p = container.parentElement;
-                while (p && p !== svg) {
-                    p.style.opacity = '1';
-                    p = p.parentElement;
+            targets.forEach(el => {
+                el.style.opacity = '1';
+                // Ensure parents are visible
+                let p = el.parentElement;
+                while (p && p !== svg) { 
+                    p.style.opacity = '1'; 
+                    p = p.parentElement; 
                 }
             });
         } catch (e) {
-            console.error("Highlighting error:", e);
+            console.error("Invalid selector:", selector);
         }
     } else {
-        // Default state: everything bright
+        // If no selector (Step 1), show everything
         svg.querySelectorAll('*').forEach(el => el.style.opacity = '1');
     }
 }
