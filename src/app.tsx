@@ -32,7 +32,7 @@ model.support(support);
 
 ReactDOM.render(
   <div>
-    <div style={{ width: 800, height: 600, overflow: 'scroll' }}>
+    <div style={{ width: 800, height: 800, overflow: 'scroll' }}>
       <RuleMatrixApp
         model={model}
         streams={streams}
@@ -41,17 +41,6 @@ ReactDOM.render(
         input={input}
         widgets={true}
         id="rm-1"
-      />
-    </div>
-    <div style={{ width: 800, height: 600, overflow: 'scroll' }}>
-      <RuleMatrixApp
-        model={model}
-        streams={streams}
-        support={support}
-        styles={styles}
-        input={input}
-        widgets={true}
-        id="rm-2"
       />
     </div>
   </div>,
